@@ -1,14 +1,15 @@
 package br.com.stefanini.maratonadev.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+
 import br.com.stefanini.maratonadev.dao.CarroDao;
 import br.com.stefanini.maratonadev.dto.CarroDto;
 import br.com.stefanini.maratonadev.model.Carro;
 import br.com.stefanini.maratonadev.model.parser.CarroParser;
-
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author danilodorgam
@@ -24,4 +25,15 @@ public class CarroService {
     public List<CarroDto> listar(){
         return dao.listar().stream().map(CarroParser.get()::dto).collect(Collectors.toList());
     }
+    
+    public Carro buscarPorPlaca(String placa) {
+		return dao.buscarPelaPlaca(placa);
+	}
+	
+	public CarroDto buscarPorPlacaDto(String placa) {
+		return CarroParser.get().dto(this.buscarPorPlaca(placa));
+	}
+	
+	
+	
 }

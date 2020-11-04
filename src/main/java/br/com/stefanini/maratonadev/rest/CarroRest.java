@@ -1,19 +1,21 @@
 package br.com.stefanini.maratonadev.rest;
 
-import br.com.stefanini.maratonadev.dto.CarroDto;
-import br.com.stefanini.maratonadev.service.CarroService;
+import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
-import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import br.com.stefanini.maratonadev.dto.CarroDto;
+import br.com.stefanini.maratonadev.service.CarroService;
 
 /**
  * @author danilodorgam
@@ -44,5 +46,18 @@ public class CarroRest {
                 .entity(service.listar())
                 .build();
     }
+    
+    @GET
+	@Path("/{placa}")
+	@Operation(summary = "Buscar carro pela placa",
+			description = "Buscar carro pela placa")
+	@APIResponse(responseCode = "200",
+			description = "carro", 
+			content = {
+			@Content(mediaType = "application/json", 
+					schema = @Schema(implementation = CarroDto.class)) })
+	public Response buscarCarroPelaPlaca(@PathParam("placa") String placa) {
+		return Response.ok(service.buscarPorPlacaDto(placa)).build();
+	}
 
 }

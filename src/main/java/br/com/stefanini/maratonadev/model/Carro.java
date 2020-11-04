@@ -9,6 +9,7 @@ import javax.persistence.*;
  * @author danilodorgam
  * @version 0.1.0
  * @created 29/10/2020 on 18:27
+ * cont por Ramon Fernandes
  */
 @Entity
 @Table(name = "carro")
