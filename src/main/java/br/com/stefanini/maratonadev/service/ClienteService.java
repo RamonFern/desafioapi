@@ -26,6 +26,10 @@ public class ClienteService {
 	public void inserir(@Valid ClienteDto cliente) {
 		dao.inserir(ClienteParser.get().toEntity(cliente));
 	}
+
+	public ClienteDto buscarPorId(Long id) {
+		return ClienteParser.get().dto(dao.buscarPorId(id));
+	}
 	
 
 }

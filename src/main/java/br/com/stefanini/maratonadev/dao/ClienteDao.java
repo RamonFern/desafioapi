@@ -14,13 +14,17 @@ public class ClienteDao {
 	 public List<Cliente> listar(){
 	        return Cliente.listAll(Sort.by("nome").ascending());
 	    }
-//FAZER COMMIT INSERIR CLIENTE
+
 	public void inserir(Cliente cliente) {
 		Cliente.persist(cliente);
 	}
 
 	public Optional<Cliente> buscarPorCPF(String cpf) {
 		return Optional.ofNullable(Cliente.find("cpf", cpf).firstResult());
+	}
+
+	public Cliente buscarPorId(Long id) {
+		return Cliente.findById(id);
 	}
 
 }
