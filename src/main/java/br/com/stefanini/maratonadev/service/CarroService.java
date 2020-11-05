@@ -34,6 +34,10 @@ public class CarroService {
 		return CarroParser.get().dto(this.buscarPorPlaca(placa));
 	}
 	
+	public void inserir(Carro carro) {
+		dao.inserir(carro);
+	}
+	
 	
 	
 }

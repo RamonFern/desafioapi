@@ -1,61 +1,90 @@
 package br.com.stefanini.maratonadev.model;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 /**
  * @author danilodorgam
  * @version 0.1.0
- * @created 29/10/2020 on 18:27
- * cont por Ramon Fernandes
+ * @created 29/10/2020 on 18:27 cont por Ramon Fernandes
  */
 @Entity
 @Table(name = "carro")
-public class Carro   extends PanacheEntityBase {
-    @Id
-    private String placa;
+public class Carro extends PanacheEntityBase {
+	@Id
+	private String placa;
 
-    @Column(name = "ano")
-    private int ano;
+	@Column(name = "ano")
+	private int ano;
 
-    @Column(name = "modelo")
-    private String modelo;
+	@Column(name = "modelo")
+	private String modelo;
 
-    @Column(name = "marca")
-    private String marca;
+	@Column(name = "marca")
+	private String marca;
 
+	@OneToOne
+	@JoinColumn(name = "id_cliente", nullable = true)
+	private Cliente cliente;
 
-    public String getPlaca() {
-        return placa;
-    }
+	@OneToMany(mappedBy = "carro")
+	private List<Locacoes> locacoes;
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
+	public String getPlaca() {
+		return placa;
+	}
 
-    public int getAno() {
-        return ano;
-    }
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
 
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
+	public int getAno() {
+		return ano;
+	}
 
-    public String getModelo() {
-        return modelo;
-    }
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
+	public String getModelo() {
+		return modelo;
+	}
 
-    public String getMarca() {
-        return marca;
-    }
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
 
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public List<Locacoes> getLocacoes() {
+		return locacoes;
+	}
+
+	public void setLocacoes(List<Locacoes> locacoes) {
+		this.locacoes = locacoes;
+	}
+	
 }

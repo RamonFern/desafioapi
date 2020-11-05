@@ -22,5 +22,10 @@ public class CarroDao {
 		return Carro.findById(placa);
 	}
 
+	public void inserir(Carro carro) {
+		Carro.persist(carro);	
+		
+	}
+
 	
 }
