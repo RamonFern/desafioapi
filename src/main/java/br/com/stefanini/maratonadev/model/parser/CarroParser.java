@@ -1,7 +1,10 @@
 package br.com.stefanini.maratonadev.model.parser;
 
+import java.util.Objects;
+
 import br.com.stefanini.maratonadev.dto.CarroDto;
 import br.com.stefanini.maratonadev.model.Carro;
+import br.com.stefanini.maratonadev.model.Cliente;
 
 /**
  * @author danilodorgam
@@ -21,7 +24,13 @@ public class CarroParser {
         dto.setAno(entidade.getAno());
         dto.setModelo(entidade.getModelo());
         dto.setMarca(entidade.getMarca());
-//        dto.setEstaAlugado(entidade);
+        dto.setEstaAlugado(Objects.nonNull(entidade.getCliente()));
+        
+        if (dto.getEstaAlugado() == true) {
+			Cliente cliente = entidade.getCliente();
+			dto.setIdCliente(cliente.id);
+			dto.setNomeCliente(cliente.getNome());
+		}
         return dto;
     }
 }

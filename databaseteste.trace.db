@@ -396,3 +396,6 @@ insert into Carro(placa,ano,modelo,marca) values('OF1998702',V2,'Fox City 1.0 Mi
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at io.quarkus.runner.bootstrap.StartupActionImpl$3.run(StartupActionImpl.java:134)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-11-05 15:08:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "CPF VARCHAR(11) NOT NULL": "'67567453535453' (14)"; SQL statement:
+insert into cliente (placa_carro, cep, contato, cpf, email, endereco, nome, id) values (?, ?, ?, ?, ?, ?, ?, ?) [22001-197]

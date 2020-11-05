@@ -25,7 +25,6 @@ public class ClienteService {
 
 	@Transactional(rollbackOn = Exception.class)
 	public void inserir(@Valid Cliente cliente) {
-		//Cliente cliente = ClienteParser.get().toEntity(dto);
 		dao.inserir(cliente);
 	}
 
