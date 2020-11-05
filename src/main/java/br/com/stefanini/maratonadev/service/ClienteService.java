@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 import br.com.stefanini.maratonadev.dao.ClienteDao;
 import br.com.stefanini.maratonadev.dto.ClienteDto;
+import br.com.stefanini.maratonadev.model.Cliente;
 import br.com.stefanini.maratonadev.model.parser.ClienteParser;
 
 @RequestScoped
@@ -23,8 +24,9 @@ public class ClienteService {
 	}
 
 	@Transactional(rollbackOn = Exception.class)
-	public void inserir(@Valid ClienteDto cliente) {
-		dao.inserir(ClienteParser.get().toEntity(cliente));
+	public void inserir(@Valid Cliente cliente) {
+		//Cliente cliente = ClienteParser.get().toEntity(dto);
+		dao.inserir(cliente);
 	}
 
 	public ClienteDto buscarPorId(Long id) {

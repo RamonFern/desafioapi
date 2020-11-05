@@ -1,8 +1,11 @@
 package br.com.stefanini.maratonadev.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,10 +21,9 @@ public class Cliente extends PanacheEntity{
 	@OneToOne
 	@JoinColumn(name = "placa_carro", nullable = true)
 	private Carro carro;
-//
-//	@OneToMany(mappedBy = "cliente")
-//	private List<Historico> historico;
 
+	@OneToMany(mappedBy = "cliente")
+	private List<Locacoes> locacoes;
 
 	@Column(name = "cpf", nullable = false, length = 11, unique = true)
 	private String cpf;
@@ -98,6 +100,13 @@ public class Cliente extends PanacheEntity{
 		this.endereco = endereco;
 	}
 
+	public List<Locacoes> getLocacoes() {
+		return locacoes;
+	}
+
+	public void setLocacoes(List<Locacoes> locacoes) {
+		this.locacoes = locacoes;
+	}
 
 	
 	

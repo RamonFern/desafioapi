@@ -1,7 +1,5 @@
 package br.com.stefanini.maratonadev.dto;
 
-import javax.persistence.Column;
-
 /**
  * @author danilodorgam
  * @version 0.1.0
@@ -9,43 +7,75 @@ import javax.persistence.Column;
  */
 public class CarroDto {
 
-    private String placa;
+	private String placa;
 
-    private int ano;
+	private int ano;
 
-    private String modelo;
+	private String modelo;
 
-    private String marca;
+	private String marca;
 
-    public String getPlaca() {
-        return placa;
-    }
+	private Long idCliente;
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
+	private String nomeCliente;
 
-    public int getAno() {
-        return ano;
-    }
+	private Boolean estaAlugado;
 
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
+	public String getPlaca() {
+		return placa;
+	}
 
-    public String getModelo() {
-        return modelo;
-    }
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
+	public int getAno() {
+		return ano;
+	}
 
-    public String getMarca() {
-        return marca;
-    }
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
 
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
+	public String getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public Boolean getEstaAlugado() {
+		return estaAlugado;
+	}
+
+	public void setEstaAlugado(Boolean estaAlugado) {
+		this.estaAlugado = estaAlugado;
+	}
+
+	public Long getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public String getNomeCliente() {
+		return nomeCliente;
+	}
+
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
+	}
+	
+	
 }

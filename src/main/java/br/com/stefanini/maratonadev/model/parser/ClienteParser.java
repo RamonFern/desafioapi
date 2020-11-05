@@ -26,25 +26,25 @@ public class ClienteParser {
 		}
 
 		
-		public ClienteDto dto(Cliente entidade) {
-			ClienteDto dto = new ClienteDto();
-			dto.setCpf(entidade.getCpf());
-			dto.setCep(entidade.getCep());
-			dto.setContato(entidade.getContato());
-			dto.setEmail(entidade.getEmail());
-			//dto.setId(entidade.getId());
-			dto.setNome(entidade.getNome());
-			dto.setPossuiVeiculo(Objects.nonNull(entidade.getCarro()));
+		public ClienteDto dto(Cliente cliente) {
+			ClienteDto clienteDto = new ClienteDto();
+			clienteDto.setCpf(cliente.getCpf());
+			clienteDto.setCep(cliente.getCep());
+			clienteDto.setContato(cliente.getContato());
+			clienteDto.setEmail(cliente.getEmail());
+			//clienteDto.setId(cliente.getId());
+			clienteDto.setNome(cliente.getNome());
+			clienteDto.setPossuiVeiculo(Objects.nonNull(cliente.getCarro()));
 			
-			if (dto.isPossuiVeiculo()) {
-				Carro carro = entidade.getCarro();
-				dto.setPlacaCarro(carro.getPlaca());
-				dto.setMarcaCarro(carro.getMarca());
-				dto.setAnoCarro(carro.getAno());
-				dto.setModeloCarro(carro.getModelo());
+			if (clienteDto.isPossuiVeiculo()) {
+				Carro carro = cliente.getCarro();
+				clienteDto.setPlacaCarro(carro.getPlaca());
+				clienteDto.setMarcaCarro(carro.getMarca());
+				clienteDto.setAnoCarro(carro.getAno());
+				clienteDto.setModeloCarro(carro.getModelo());
 			}
 			
-			return dto;
+			return clienteDto;
 		}
 }
 

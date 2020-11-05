@@ -17,6 +17,7 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 import br.com.stefanini.maratonadev.dto.ClienteDto;
+import br.com.stefanini.maratonadev.model.Cliente;
 import br.com.stefanini.maratonadev.service.ClienteService;
 
 @Path("cliente")
@@ -51,7 +52,7 @@ public class ClienteRest {
 				description = "cliente", 
 				content = { 
 						@Content(mediaType = "application/json") })
-		public Response inserir(ClienteDto cliente) {
+		public Response inserir(Cliente cliente) {
 			service.inserir(cliente);
 			return Response.status(Status.CREATED).build();
 

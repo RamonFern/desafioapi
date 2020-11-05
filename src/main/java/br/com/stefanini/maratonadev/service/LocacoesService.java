@@ -44,9 +44,9 @@ public class LocacoesService {
 		Cliente cliente = clienteDao.buscarPorId(idCliente);
 		Carro carro = carroService.buscarPorPlaca(placa);
 		
-//		if (isEntidadesNull(cliente, carro) || aluguelInvalido(cliente, carro)) {
-//			return false;
-//		}
+		if (!(cliente.getCarro() == null) || !(carro.getCliente() == null)) {
+			return false;
+		}
 		cliente.setCarro(carro);
 		carro.setCliente(cliente);
 

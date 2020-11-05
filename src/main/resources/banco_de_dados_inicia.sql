@@ -1,3 +1,6 @@
+insert into Cliente(id,nome,cpf,contato,email,cep,endereco) values(1,'Ramon Fernandes','32232333333','3345-1539','ramonfernandes9@gmail.com','65150000','Rua Estefanio Saldanha');
+
+
 insert into Carro(placa,ano,modelo,marca) values('BQW0877',1990,'SONIC Sed. LTZ 1.6 16V FlexPower 4p Aut.','GM - Chevrolet');
 insert into Carro(placa,ano,modelo,marca) values('GWK8629',2015,'Bonanza S  Luxe 4.1','GM - Chevrolet');
 insert into Carro(placa,ano,modelo,marca) values('OTR0128',2013,'Fox Comfortline 1.6 Flex 8V 5p','VW - VolksWagen');

@@ -31,8 +31,8 @@ public class LocacoesRest {
 
 	@GET
 	@Path("/{idCliente}")
-	@Operation(summary = "Recuperar historico de cliente por id", 
-			description = "Recuperar historico cliente")
+	@Operation(summary = "Recuperar historico de locacoes do cliente por id", 
+			description = "Recuperar historico de locacoes do cliente")
 	@APIResponse(responseCode = "200", 
 			description = "historico", 
 			content = {
@@ -52,13 +52,15 @@ public class LocacoesRest {
 			content = { 
 					@Content(mediaType = "application/json") })
 	public Response alugarCarro(@PathParam("idCliente") Long idCliente, @PathParam("placa") String placa) {
-		boolean success = locacoesService.alugar(idCliente, placa);
-		if (success) {
+		boolean aluguelAceito = locacoesService.alugar(idCliente, placa);
+		if (aluguelAceito) {
 			return Response.status(Status.ACCEPTED).build();
 		}
 
 		return Response.status(Status.BAD_REQUEST).build();
 	}
+	
+	//devolver carro
 
 	
 	

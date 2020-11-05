@@ -21,6 +21,7 @@ public class CarroParser {
         dto.setAno(entidade.getAno());
         dto.setModelo(entidade.getModelo());
         dto.setMarca(entidade.getMarca());
+//        dto.setEstaAlugado(entidade);
         return dto;
     }
 }
