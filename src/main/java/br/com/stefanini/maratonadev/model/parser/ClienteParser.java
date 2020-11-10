@@ -32,7 +32,7 @@ public class ClienteParser {
 			clienteDto.setCep(cliente.getCep());
 			clienteDto.setContato(cliente.getContato());
 			clienteDto.setEmail(cliente.getEmail());
-			//clienteDto.setId(cliente.getId());
+			//clienteDto.setId(cliente.id);
 			clienteDto.setNome(cliente.getNome());
 			clienteDto.setPossuiVeiculo(Objects.nonNull(cliente.getCarro()));
 			

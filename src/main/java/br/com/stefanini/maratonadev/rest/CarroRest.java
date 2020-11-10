@@ -30,9 +30,26 @@ public class CarroRest {
     @Inject
     CarroService service;
 
+//    @GET
+//    @Operation(summary = "Listar carros",
+//            description = "Lista de carros com ano de compra, marca,modelo e placa")
+//    @APIResponse(responseCode = "201",
+//            description = "carro",
+//            content = {
+//                    @Content(mediaType =  "application/json",
+//                            schema = @Schema(implementation = CarroDto.class))
+//            }
+//    )
+//    public Response listar(){
+//        return Response
+//                .status(Response.Status.OK)
+//                .entity(service.listar())
+//                .build();
+//    }
+    
     @GET
-    @Operation(summary = "Listar carros",
-            description = "Lista de carros com ano de compra, marca,modelo e placa")
+    @Operation(summary = "Listar carros disponiveis",
+            description = "Lista de carros disponíveis para alugar")
     @APIResponse(responseCode = "201",
             description = "carro",
             content = {
@@ -40,10 +57,10 @@ public class CarroRest {
                             schema = @Schema(implementation = CarroDto.class))
             }
     )
-    public Response listar(){
+    public Response listarCarrosDisponiveis(){
         return Response
                 .status(Response.Status.OK)
-                .entity(service.listar())
+                .entity(service.listarCarrosDisponiveis())
                 .build();
     }
     

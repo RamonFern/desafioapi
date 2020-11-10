@@ -51,7 +51,7 @@ public class LocacoesRest {
 			description = "alugar", 
 			content = { 
 					@Content(mediaType = "application/json") })
-	public Response alugarCarro(@PathParam("idCliente") Long idCliente, @PathParam("placa") String placa) {
+	public Response alugar(@PathParam("idCliente") Long idCliente, @PathParam("placa") String placa) {
 		boolean aluguelAceito = locacoesService.alugar(idCliente, placa);
 		if (aluguelAceito) {
 			return Response.status(Status.ACCEPTED).build();
@@ -60,7 +60,22 @@ public class LocacoesRest {
 		return Response.status(Status.BAD_REQUEST).build();
 	}
 	
-	//devolver carro
+	@PUT
+	@Path("/devolver/{idCliente}")
+	@Operation(summary = "Devolver carro", 
+			description = "Devolver carro")
+	@APIResponse(responseCode = "202", 
+			description = "devolver", 
+			content = { 
+					@Content(mediaType = "application/json") })
+	public Response devolver(@PathParam("idCliente") Long idCliente) {
+		boolean devolucaoAceita = locacoesService.devolverCarro(idCliente);
+		if (devolucaoAceita) {
+			return Response.status(Status.ACCEPTED).build();
+		}
+
+		return Response.status(Status.BAD_REQUEST).build();
+	}
 
 	
 	

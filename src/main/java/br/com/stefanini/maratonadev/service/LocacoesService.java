@@ -58,4 +58,23 @@ public class LocacoesService {
 		return true;
 	}
 
+	@Transactional(rollbackOn = Exception.class)
+	public boolean devolverCarro(Long idCliente) {
+		Cliente cliente = clienteDao.buscarPorId(idCliente);
+		Carro carro = carroService.buscarPorPlaca(cliente.getCarro().getPlaca());
+		
+		if ((cliente.getCarro() == null) || (carro.getCliente() == null)) {
+			return false;
+		}
+		//System.out.println("chegou depois do if");
+		cliente.setCarro(null);
+		carro.setCliente(null);
+		
+		clienteDao.inserir(cliente);  /// CONSERTAR DEVOLVER CARRO
+		carroService.inserir(carro);
+		
+		locacoesDao.inserir(new Locacoes(cliente, carro));
+		return true;
+	}
+
 }

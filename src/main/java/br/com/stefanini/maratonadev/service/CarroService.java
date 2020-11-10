@@ -1,5 +1,6 @@
 package br.com.stefanini.maratonadev.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,6 +37,17 @@ public class CarroService {
 	
 	public void inserir(Carro carro) {
 		dao.inserir(carro);
+	}
+
+	public List<CarroDto> listarCarrosDisponiveis() {
+		List<CarroDto> listBanco = dao.listarDisponiveis().stream().map(CarroParser.get()::dto).collect(Collectors.toList());
+		List<CarroDto> listaDisponivel = new ArrayList<CarroDto>();
+		for (CarroDto carroDto : listBanco) {
+			if(!carroDto.getEstaAlugado()) {
+				listaDisponivel.add(carroDto);
+			}
+		}
+		return listaDisponivel;
 	}
 	
 	
